@@ -2,9 +2,8 @@
 import { useEffect, useState } from 'react';
 import Page1 from './Pages/Page1';
 import Page2 from './Pages/Page2';
-import { Page3, UserContext } from './Pages/Page3';
-// import './App.css';
-
+import { Page3 } from './Pages/Page3';
+import { UserContext } from './context/UserContext';
 
 
 
@@ -14,8 +13,6 @@ function App() {
   const [sec, setSec] = useState(0)
 
   const [show, setShow] = useState(true); // show/hide text
-
-  
 
 
   useEffect(() => {
@@ -28,13 +25,12 @@ function App() {
 
   }, [])
 
-  // make good ui
-
   let namnikaAge = 25
 
 
   return (
-    <div>
+
+    <UserContext.Provider value={{ name: 'Namnika' }} >
       <div className="App flex items-center flex-col justify-center w-full my-24 gap-4">
         {/* Task 1: Build a Counter App */}
 
@@ -61,17 +57,14 @@ function App() {
         <button className='bg-[#f8fafc] border-solid border-2 border-sky-500 rounded-lg py-1.5 px-3 font-medium shadow-lg text-sky-500 ' onClick={() => setShow(!show)}>show/hide</button>
 
       </div>
-
+      {/* Props example */}
       <Page1 count={count} setCount={setCount} />
       <Page2 age={namnikaAge + 5} />
       <Greeting name={"namnika"} />
 
-
-      <UserContext.Provider value={{name: 'Namnika'}}>
-        <Page3 />
-      </UserContext.Provider>
-
-    </div>
+      {/* Context api example */}
+      <Page3 />
+    </UserContext.Provider>
 
   );
 }
