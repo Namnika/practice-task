@@ -11,3 +11,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.line {
+  border-top: 1px solid #030712;
+  width: 100%;
+  /* Adjust width as needed */
+}
