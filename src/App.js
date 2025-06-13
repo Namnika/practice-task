@@ -1,9 +1,12 @@
 
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import Page1 from './Pages/Page1';
 import Page2 from './Pages/Page2';
 import { Page3 } from './Pages/Page3';
-import { UserContext } from './context/UserContext';
+import { ThemeContext, ThemeProvider } from './context/ThemeContext';
+import Header from './components/Header';
+import Content from './components/Content';
+// import { UserContext } from './context/UserContext';
 
 
 
@@ -25,16 +28,22 @@ function App() {
 
   }, [])
 
-  let namnikaAge = 25
+  // let namnikaAge = 25
 
 
   return (
 
-    <UserContext.Provider value={{ name: 'Namnika' }} >
-      <div className="App flex items-center flex-col justify-center w-full my-24 gap-4">
-        {/* Task 1: Build a Counter App */}
+    <ThemeProvider >
+      <div className="App flex items-center flex-col justify-center bg-[#e2e8f0]  my-24 h-full ">
 
-        <h2 className='text-[25px] font-semibold'>Task 1: Build a Counter App</h2>
+        <Header title={'Changing Theme Background Styles header (shared props)'} />
+        <hr className='h-px bg-slate-950 dark:bg-gray-100 border-0'/>
+        <Content />
+      </div>
+
+      {/* Task 1: Build a Counter App */}
+
+      {/* <h2 className='text-[25px] font-semibold'>Task 1: Build a Counter App</h2>
 
 
         <h4 className='font-medium text-lg divide-x-4 divide-gray-400'>Counter: <span className='text-2xl px-4'>{count}</span></h4>
@@ -42,30 +51,30 @@ function App() {
 
           <button className='bg-[#f8fafc] border-solid border-2 border-sky-500 rounded-lg py-1.5 px-3 font-medium shadow-lg text-sky-500' onClick={() => setCount(count - 1)}>decrement</button>
           <button className='bg-[#f8fafc] border-solid border-2 border-sky-500 rounded-lg py-1.5 px-3 font-medium shadow-lg text-sky-500' onClick={() => setCount(0)}>reset</button>
-        </div>
+        </div> */}
 
-        {/* Task 2: Build a Timer App */}
-        <h2 className='text-[25px] font-semibold'>Task 2: Build a Timer App</h2>
+      {/* Task 2: Build a Timer App */}
+      {/* <h2 className='text-[25px] font-semibold'>Task 2: Build a Timer App</h2>
 
-        <h3 className='font-medium text-lg'>Timer: <span className='text-2xl px-4'>{sec}</span> sec</h3>
+        <h3 className='font-medium text-lg'>Timer: <span className='text-2xl px-4'>{sec}</span> sec</h3> */}
 
-        {/* Task 3: Show/Hide Text */}
-        <h2 className='text-[25px] font-semibold'>Task 3: Show/Hide Text</h2>
+      {/* Task 3: Show/Hide Text */}
+      {/* <h2 className='text-[25px] font-semibold'>Task 3: Show/Hide Text</h2>
 
         {show && <h3 className='font-medium text-lg underline'>This text can be hide or show</h3>}
 
-        <button className='bg-[#f8fafc] border-solid border-2 border-sky-500 rounded-lg py-1.5 px-3 font-medium shadow-lg text-sky-500 ' onClick={() => setShow(!show)}>show/hide</button>
+        <button className='bg-[#f8fafc] border-solid border-2 border-sky-500 rounded-lg py-1.5 px-3 font-medium shadow-lg text-sky-500 ' onClick={() => setShow(!show)}>show/hide</button> */}
 
-      </div>
+
       {/* Props example */}
-      <Page1 count={count} setCount={setCount} />
+      {/* <Page1 count={count} setCount={setCount} />
       <Page2 age={namnikaAge + 5} />
-      <Greeting name={"namnika"} />
+      <Greeting name={"namnika"} /> */}
 
-      {/* Context api example */}
-      <Page3 />
-    </UserContext.Provider>
+      {/* Context api example passes value to all components*/}
+      {/* <Page3 /> */}
 
+    </ThemeProvider>
   );
 }
 
